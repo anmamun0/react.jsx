@@ -175,6 +175,21 @@ const BookList = () => {
   );
 };
 ```
+
+```jsx 
+const books = ['Dhaka','Sylhet','Chattrogram','Barisal'];
+
+const BookList = () => {
+  return (
+    <ul>
+      {books.map((item,i) => (
+        <li key={i.toString()}> {item} </li>
+      ))}
+    </ul>
+  );
+};
+```
+
 ###### ✅ Always add a key when using .map() in JSX.
 
 ### 🔥 2. Conditional Rendering (Ternary & &&)
@@ -439,3 +454,23 @@ const Layout = () => (
   </>
 );
 ```
+
+<br>
+<br>
+<br>
+
+---
+
+## Why map() is used in JSX?
+JSX is just syntactic sugar for React.createElement, and it needs to return a list of elements.
+
+#### 🔹 map() returns a new array — perfect for JSX rendering.
+ 
+```jsx 
+{books.map(book => <li key={book.id}>{book.title}</li>)}
+// This works because map() creates and returns a new array of JSX elements that React can render.
+```
+ 
+- ❌ for loop — doesn't return a value
+- ❌ forEach() — returns undefined, is only for side-effects, not value transformation — so it’s not useful in JSX rendering.
+ 
