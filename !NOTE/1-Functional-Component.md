@@ -1,4 +1,4 @@
-#F unctional Component
+# 🔑 Functional Component
 
  
 ### ✅ What Is a Functional Component in React?
@@ -9,7 +9,7 @@ A functional component is a JavaScript function that returns JSX (React elements
 - Can use hooks (like useState, useEffect)
 - Accepts props as an argument
 
-🧠 Syntax of Functional Component
+## Syntax of Functional Component
 ```jsx 
 function Welcome() {
   return <h1>Hello, AN Mamun!</h1>;
@@ -22,7 +22,7 @@ const Welcome = () => {
 };
 ```
 
-🧪 Example with props
+## 🧪 Example with props
 ```jsx 
 function Greet(props) {
   return <h2>Welcome, {props.name}!</h2>;
@@ -39,7 +39,7 @@ const Greet = ({ name }) => {
 
 ```
 
-🧲 Example with useState (Functional + State)
+## 🧲 Example with useState (Functional + State)
 ```jsx 
 import { useState } from 'react';
 
@@ -55,7 +55,7 @@ function Counter() {
 }
 ```
 
-✅ How to Use Functional Component in App
+## How to Use Functional Component in App
 ```jsx 
 import React from 'react';
 import ReactDOM from 'react-dom/client';
