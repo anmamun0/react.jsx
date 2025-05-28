@@ -72,6 +72,32 @@ export default function InputControl() {
   );
 }
 ```
+## Option 1: Group refs in an object
+```jsx 
+import React, { useRef } from 'react';
+
+const Test = () => {
+  const inputRefs = useRef({
+    firstName: null,
+    lastName: null,
+  });
+
+  const handleRef = () => {
+    const fname = inputRefs.current.firstName.value;
+    const lname = inputRefs.current.lastName.value;
+    alert(`${fname} ${lname}`);
+  };
+
+  return (
+    <>
+      <input ref={(el) => (inputRefs.current.firstName = el)} type="text" placeholder="First Name" />
+      <input ref={(el) => (inputRefs.current.lastName = el)}  type="text" placeholder="Last Name" />
+      <button onClick={handleRef}>Click</button>
+    </>
+  );
+}; 
+export default Test;
+```
 
 ## 1. Text/Content Elements (div, p, span, etc.)
 
@@ -87,6 +113,7 @@ export default function InputControl() {
 | `ref.current.getAttribute()`     | Get HTML attribute                          |
 | `ref.current.setAttribute()`     | Set HTML attribute                          |
 | `ref.current.remove()`           | Remove element from DOM                     |
+| `ref.current.src`                | Set HTML Attibute src of `<a>`              |
 
 ## 2. Button, Anchor, and Similar Controls
 
@@ -470,4 +497,36 @@ function Timer() {
   );
 }
 ```
+
+## 5. Store Previous API Response Without Re-rendering
+```jsx 
+import { useEffect, useRef, useState } from "react";
+
+const PreviousApiResponse = () => {
+
+  const prevResponse = useRef(null);
+
+  const fetchData = async () => {
+    const res = await fetch(`https://jsonplaceholder.typicode.com/users`);
+    const data = await res.json();
+
+    prevResponse.current = data; // store without re-render
+  };
+
+  const showData = () => {
+    alert(prevResponse.current);
+  }
+
+  return (
+    <>
+      <button onClick={fetchData}>Call API</button>
+      <button onClick={showData}>Show Data</button>
+      
+    </>
+  );
+};
+```
+prevResponse caches the old API data — no re-render needed.
+
+
  
