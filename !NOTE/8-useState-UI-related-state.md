@@ -5,6 +5,9 @@ useState is a React Hook that lets you add state to functional components.
 - In React, state refers to an object that holds data of your component
 - When data changed component refresh automatically to reflect the changes
 
+> Holds all Data State memory = UI View<br>
+> if change state memory , automaticaly re-render the UI View
+
 ##### Syntax:
 ```js 
 const [state, setState] = useState(initialValue);
@@ -58,12 +61,7 @@ const updateName = (e) => {
 ## Controlled Input Example
 ```jsx 
 const [email, setEmail] = useState("");
-
-<input 
-  type="email" 
-  value={email} 
-  onChange={(e) => setEmail(e.target.value)} 
-/>
+<input type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
 ```
 
 ## Things to Remember
@@ -241,9 +239,7 @@ const MultiStepForm = () => {
     <>
       {step === 1 && (
         <>
-          <input
-            placeholder="Name"
-            value={data.name}
+          <input  placeholder="Name"  value={data.name}
             onChange={(e) => setData(prev => ({ ...prev, name: e.target.value }))}
           />
           <button onClick={next}>Next</button>
@@ -251,9 +247,7 @@ const MultiStepForm = () => {
       )}
       {step === 2 && (
         <>
-          <input
-            placeholder="Email"
-            value={data.email}
+          <input   placeholder="Email"  value={data.email}
             onChange={(e) => setData(prev => ({ ...prev, email: e.target.value }))}
           />
           <button onClick={back}>Back</button>
@@ -262,10 +256,7 @@ const MultiStepForm = () => {
       )}
       {step === 3 && (
         <>
-          <input
-            placeholder="Password"
-            type="password"
-            value={data.password}
+          <input placeholder="Password" type="password" value={data.password}
             onChange={(e) => setData(prev => ({ ...prev, password: e.target.value }))}
           />
           <button onClick={back}>Back</button>
