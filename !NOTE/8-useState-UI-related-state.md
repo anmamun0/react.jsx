@@ -8,6 +8,23 @@ useState is a React Hook that lets you add state to functional components.
 > Holds all Data State memory = UI View<br>
 > if change state memory , automaticaly re-render the UI View
 
+### WHY WE ARE USING
+<h6> 
+Spread Operator In State Object
+
+- Step: 01 in React, the state object is intended to be immutable
+- Step: 02 React encourages developers to follow the principle Of immutability when working with state,
+- Step: 03 Which means that you should not directly mutate the state object, Instead, you create a new Object with the desired
+changes and update the state with the new object.
+- Step: 04 By following immutability. React can efficiently compare previous and current state objects to determine if a re.render is
+necessary
+- Step: 05 When you mutate the state object directly, React may not detect the changes correctly, leading to unexpected behavior.
+Using the spread operator technique we are creating new object that maintains the previous state's values while making
+the necessary modifications.
+- Step: 07 This ensures that the state object remains immutable
+- Step: 08 So, to always treat the state object as immutable and create a new object when updating state values, it ensures React can detect the change and trigger a re-render, maintaining predictable and reliable UI updates
+</h6>
+
 ##### Syntax:
 ```js 
 const [state, setState] = useState(initialValue);
@@ -57,6 +74,22 @@ const updateName = (e) => {
   setUser(prev => ({ ...prev, name: e.target.value }));
 };
 ```
+
+```jsx 
+const [user, setUser] = useState({
+                          fullname: "",
+                          email: ""
+                        });
+
+const updateName = (e) => {
+  setUser(prev => (
+            { ...prev,
+              fullname: 'Gest'
+            }
+    ));
+};
+```
+
 
 ## Controlled Input Example
 ```jsx 
