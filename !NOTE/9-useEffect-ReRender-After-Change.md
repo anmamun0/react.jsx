@@ -23,6 +23,8 @@ useEffect(() => {
 
 
 
+
+
 ### Example 1: Log on Every Render
 
 ```jsx
@@ -101,6 +103,30 @@ const UserList = () => {
 
 
 Let's go over several advanced and complex use cases with explanations and working examples.
+
+## 0. After Change the value will re-render useEffect
+```
+import React, { useRef, useEffect, useState } from "react"; 
+
+const Test = () => {
+  const [change, setChange] = useState(0);
+
+  useEffect(() => {
+    alert('New Refresh ');
+  }, [change]);
+
+  const handleChange = () => {
+    setChange(change + 1);
+    console.log(change);
+  }
+
+  return <>
+    <button onClick={handleChange} className="bg-blue-600 px-4 py-2 text-white m-2">Click</button>
+  </>;
+};
+
+export default Test;
+```
 
 ## 1. Fetching with Cleanup (AbortController)
 If a user navigates away before the fetch completes, you should cancel the request to avoid memory leaks or unwanted state updates.
